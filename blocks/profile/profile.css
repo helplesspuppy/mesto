@@ -1,0 +1,5 @@
+.profile {
+    margin:0 auto 51px;
+    display: flex;
+    justify-content: space-between;
+}
