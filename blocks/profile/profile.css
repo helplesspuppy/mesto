@@ -3,3 +3,9 @@
     display: flex;
     justify-content: space-between;
 } 
+
+@media screen and (max-width:769px) {
+    .profile {
+        padding: 0 19px 0;
+    }
+}

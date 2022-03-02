@@ -6,3 +6,9 @@
     margin: 0 auto 67px;
     padding: 0;
 } 
+
+@media screen and (max-width:769px) {
+    .elements__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
