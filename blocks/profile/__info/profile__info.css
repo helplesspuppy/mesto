@@ -6,3 +6,11 @@
     margin-right: auto;
     align-content: flex-start;
 } 
+
+@media screen and (max-width:641px) {
+    .profile__info {
+        justify-content: center;
+        max-width: 282px;
+        margin: 0;
+    }
+}

@@ -10,5 +10,14 @@
 @media screen and (max-width:769px) {
     .elements__list {
         grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 48px;
     }
 }
+
+@media screen and (max-width:600px) {
+    .elements__list {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+} 
+
