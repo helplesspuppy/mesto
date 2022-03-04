@@ -2,8 +2,14 @@
     align-self: center;
     justify-self: center;
     position: relative;
-    max-width: 430px;
+    width: 430px;
     max-height: 330px;
     border-radius: 10px;
     background-color: white;
+}
+
+@media screen and (max-width: 641px) {
+    .popup__container {
+        max-width: 282px;
+    }
 }

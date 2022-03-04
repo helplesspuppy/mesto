@@ -76,7 +76,20 @@
     </div>
     <div class="popup">
         <div class="popup__container">
-            <form type></form>
+            <button class="popup__close-button"></button>
+            <form class="popup__form" novalidate>
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <ul class="popup__list">
+                    <li class="popup__list-element">
+                        <input class="popup__input" type="text" minlength="1" placeholder="Имя пользователя"
+                            name="name">
+                    </li>
+                    <li class="popup__list-element">
+                        <input class="popup__input" type="text" minlength="1" placeholder="Статус" name="status">
+                    </li>
+                </ul>
+                <button class="popup__submit-button" type="submit">Сохранить</button>
+            </form>
         </div>
     </div>
     <script scr="./scripts/script.js"></script>
