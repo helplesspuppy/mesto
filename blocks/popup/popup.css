@@ -1,6 +1,6 @@
 .popup {
     background-color: rgba(0,0,0,.5);
-    display: none;
+    display: flex;
     position: fixed;
     justify-content: center;
     height: 100%;
@@ -9,4 +9,5 @@
     bottom: 0;
     right: 0;
     left: 0;
+    /* display: none; */
 }
