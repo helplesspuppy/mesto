@@ -5,7 +5,7 @@ let formElement = document.querySelector('.popup__form');
 let nameInput = document.querySelector('input[name="name"]');
 let jobInput = document.querySelector('input[name="status"]');
 
-function openPopup () {
+ function openPopup () {
     popup.classList.add('popup_opened');
 }
 
@@ -19,8 +19,13 @@ function formSubmitHandler (evt) {
     let profileStatus = document.querySelector('.profile__status');
     profileName.textContent = nameInput.value;
     profileStatus.textContent = jobInput.value;
+    closePopup ();
 }
 
-formElement.addEventListener('submit', formSubmitHandler); 
-editButton.addEventListener('click', openPopup);
+formElement.addEventListener('submit', formSubmitHandler);
+editButton.addEventListener('click', function () {
+    nameInput.value = document.querySelector(".profile__name").textContent;
+    jobInput.value = document.querySelector(".profile__status").textContent;
+    openPopup();
+});
 closeButton.addEventListener('click', closePopup);
