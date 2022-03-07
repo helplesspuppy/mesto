@@ -1,7 +1,7 @@
 .profile__info {
     display: flex;
     gap: 16px 18px;
-    width: 336px;
+    max-width: calc(100% - 300px);
     flex-wrap: wrap;
     margin-right: auto;
     align-content: flex-start;
