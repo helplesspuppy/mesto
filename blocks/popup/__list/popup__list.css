@@ -5,3 +5,11 @@
     max-width: 358px;
     width: calc(100% - 72px);
 }
+
+@media screen and (max-width:426px) {
+    .popup__list {
+        width: calc(100% - 44px);
+    }
+}
+
+
