@@ -74,10 +74,11 @@
             <p class="footer__project-name">&copy; 2022 Mesto Russia</p>
         </footer>
     </div>
-    <div class="popup">
+    <!-- Попап редактирования профиля -->
+    <div class="popup popup_edit">
         <div class="popup__container">
             <button class="popup__close-button" type="button"></button>
-            <form class="popup__form" novalidate name="form">
+            <form class="popup__form popup__form_edit" novalidate name="form">
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <ul class="popup__list">
                     <li class="popup__list-element">
@@ -89,6 +90,25 @@
                     </li>
                 </ul>
                 <button class="popup__submit-button" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <!-- Попап добавления фотографий -->
+    <div class="popup popup_add">
+        <div class="popup__container">
+            <button class="popup__close-button" type="button"></button>
+            <form class="popup__form popup__form_add" novalidate name="form">
+                <h3 class="popup__title">Новое место</h3>
+                <ul class="popup__list">
+                    <li class="popup__list-element">
+                        <input class="popup__input" type="text" minlength="1" placeholder="Название"
+                            name="pictureName">
+                    </li>
+                    <li class="popup__list-element">
+                        <input class="popup__input" type="text" minlength="1" placeholder="Ссылка на картинку" name="picLink">
+                    </li>
+                </ul>
+                <button class="popup__submit-button" type="submit">Создать</button>
             </form>
         </div>
     </div>
