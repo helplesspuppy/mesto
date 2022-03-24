@@ -1,23 +1,84 @@
 let popup = document.querySelector('.popup');
 let popup_edit = document.querySelector('.popup_edit');
 let popup_add = document.querySelector('.popup_add');
-// Кнопки
+
+
 let editButton = document.querySelector('.profile__edit-button');
 let closeButtonEdit = document.querySelector('.popup__close-button_edit');
 let closeButtonAdd = document.querySelector('.popup__close-button_add');
 let addButton = document.querySelector('.profile__add-button');
-//Формы редактирования и добавления
+
 let formElementEdit = document.querySelector('.popup__form_edit');
 let formElementAdd = document.querySelector('.popup__form_add');
-// Инпуты попапа редактирования
+
 let nameInput = document.querySelector('input[name="name"]');
 let jobInput = document.querySelector('input[name="status"]');
-// Инпуты попапа добавления фотографий
+
 let picInput = document.querySelector('input[name="pictureName"]');
 let picLink = document.querySelector('input[name="picLink"]');
-// Данные профиля
+
 let profileName = document.querySelector('.profile__name');
 let profileStatus = document.querySelector('.profile__status');
+
+const cardTemplate = document.querySelector('.template-card').content;
+const elementsList = document.querySelector('.elements__list');
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+
+  function render() {
+    const cadsArray = initialCards.map((card) => {return getItem(card);});
+    elementsList.append(...cadsArray);
+  }
+
+  function getItem(card) {
+    const newCard = cardTemplate.cloneNode(true);
+    const titleEl = newCard.querySelector('.element__title');
+    const photoEl = newCard.querySelector('.element__photo');
+    titleEl.textContent = card.name;
+    photoEl.src = card.link;
+    const likeBtn = newCard.querySelector('.element__like-button');
+    likeBtn.addEventListener('click', like);
+    // Добавить кнопку удаления
+    return newCard;
+  }
+
+  function like(evt) {
+    const targetEl = evt.target;
+    targetEl.classList.toggle('element__like-button_active');
+  }
+
+  function addCard() {
+    const placeText = picInput.value;
+    const placeLink = picLink.value;
+    const cardItem = getItem({title: placeText, link: placeLink});
+    elementsList.prepend(cardItem);
+  }
+
 
  function openPopup (popup) {
     popup.classList.add('popup_opened');
@@ -31,12 +92,12 @@ function formSubmitHandler (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileStatus.textContent = jobInput.value;
-    closePopup ();
+    closePopup (popup_edit);
 }
 
-
+// Слушатели событий форм
 formElementEdit.addEventListener('submit', formSubmitHandler);
-formElementAdd.addEventListener('submit', formSubmitHandler);
+formElementAdd.addEventListener('submit', (evt) => { evt.preventDefault(); closePopup(popup_add); addCard()});
 // Анонимная функция, в которую вкладываем колбэк с нужным попап-параметром
 editButton.addEventListener('click', function () {
     nameInput.value = profileName.textContent;
@@ -46,3 +107,4 @@ editButton.addEventListener('click', function () {
 closeButtonEdit.addEventListener('click', () => closePopup(popup_edit));
 closeButtonAdd.addEventListener('click', () => closePopup(popup_add));
 addButton.addEventListener('click', () => {openPopup(popup_add)});
+render();
