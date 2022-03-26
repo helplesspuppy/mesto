@@ -64,7 +64,8 @@ const initialCards = [
     photoEl.src = card.link;
     const likeBtn = newCard.querySelector('.element__like-button');
     likeBtn.addEventListener('click', like);
-    // Добавить кнопку удаления
+    const deleteBtn = newCard.querySelector('.element__delete-button');
+    deleteBtn.addEventListener('click', cardDelete);
     return newCard;
   }
 
