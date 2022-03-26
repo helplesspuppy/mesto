@@ -1,0 +1,18 @@
+.element__delete-button {
+    width: 18px;
+    height: 19px;
+    position:absolute;
+    top: 20px;
+    right: 20px;
+    background-image: url(../../../images/крышка_помойки.svg), url(../../../images/помойка.svg);
+    background-repeat: no-repeat, no-repeat;
+    background-position: top, bottom;
+    border: none;
+    background-color: transparent;
+    transition: opacity .4s;
+    cursor: pointer;
+}
+
+.element__delete-button:hover {
+    opacity: .6;
+}

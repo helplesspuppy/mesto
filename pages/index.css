@@ -38,3 +38,4 @@
 @import url(../blocks/popup/__close-button/_add/popup__close-button_add.css);
 @import url(../blocks/popup/__close-button/_edit/popup__close-button_edit.css);
 @import url(../blocks/template/template-card.css);
+@import url(../blocks/element/__delete-button/element__delete-button.css);

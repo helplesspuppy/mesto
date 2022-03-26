@@ -11,6 +11,7 @@ let addButton = document.querySelector('.profile__add-button');
 let formElementEdit = document.querySelector('.popup__form_edit');
 let formElementAdd = document.querySelector('.popup__form_add');
 
+
 let nameInput = document.querySelector('input[name="name"]');
 let jobInput = document.querySelector('input[name="status"]');
 
@@ -75,9 +76,15 @@ const initialCards = [
   function addCard() {
     const placeText = picInput.value;
     const placeLink = picLink.value;
-    const cardItem = getItem({title: placeText, link: placeLink});
+    const cardItem = getItem({name: placeText, link: placeLink});
     elementsList.prepend(cardItem);
   }
+
+  function cardDelete(evt) {
+    const targetEl = evt.target;
+    const cardItem = targetEl.closest('.element');
+    cardItem.remove();
+    }
 
 
  function openPopup (popup) {
@@ -95,16 +102,15 @@ function formSubmitHandler (evt) {
     closePopup (popup_edit);
 }
 
-// Слушатели событий форм
 formElementEdit.addEventListener('submit', formSubmitHandler);
-formElementAdd.addEventListener('submit', (evt) => { evt.preventDefault(); closePopup(popup_add); addCard()});
-// Анонимная функция, в которую вкладываем колбэк с нужным попап-параметром
+formElementAdd.addEventListener('submit', (evt) => { evt.preventDefault(); closePopup(popup_add);addCard(); picInput.value = ''; picLink.value = '';});
+
 editButton.addEventListener('click', function () {
     nameInput.value = profileName.textContent;
     jobInput.value = profileStatus.textContent;
     openPopup(popup_edit)});
 
 closeButtonEdit.addEventListener('click', () => closePopup(popup_edit));
-closeButtonAdd.addEventListener('click', () => closePopup(popup_add));
+closeButtonAdd.addEventListener('click', () => {closePopup(popup_add); picInput.value = ''; picLink.value = '';});
 addButton.addEventListener('click', () => {openPopup(popup_add)});
 render();
