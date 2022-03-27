@@ -1,7 +1,7 @@
 let popup = document.querySelector('.popup');
-let popup_edit = document.querySelector('.popup_edit');
-let popup_add = document.querySelector('.popup_add');
-let popupImage = document.querySelector('.popup__image');
+let popupEdit = document.querySelector('.popup_edit');
+let popupAdd = document.querySelector('.popup_add');
+let popupImage = document.querySelector('.popup_image');
 
 let editButton = document.querySelector('.profile__edit-button');
 let closeButtonEdit = document.querySelector('.popup__close-button_edit');
@@ -106,22 +106,22 @@ function formSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileStatus.textContent = jobInput.value;
-  closePopup(popup_edit);
+  closePopup(popupEdit);
 }
 
 
 
 formElementEdit.addEventListener('submit', formSubmitHandler);
-formElementAdd.addEventListener('submit', (evt) => { evt.preventDefault(); closePopup(popup_add); addCard(); picInput.value = ''; picLink.value = ''; });
+formElementAdd.addEventListener('submit', (evt) => { evt.preventDefault(); closePopup(popupAdd); addCard(); picInput.value = ''; picLink.value = ''; });
 
 editButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileStatus.textContent;
-  openPopup(popup_edit)
+  openPopup(popupEdit)
 });
 
-closeButtonEdit.addEventListener('click', () => closePopup(popup_edit));
-closeButtonAdd.addEventListener('click', () => { closePopup(popup_add); picInput.value = ''; picLink.value = ''; });
+closeButtonEdit.addEventListener('click', () => closePopup(popupEdit));
+closeButtonAdd.addEventListener('click', () => { closePopup(popupAdd); picInput.value = ''; picLink.value = ''; });
 closeButtonImage.addEventListener('click', () => closePopup(popupImage));
-addButton.addEventListener('click', () => { openPopup(popup_add) });
+addButton.addEventListener('click', () => { openPopup(popupAdd) });
 render();
