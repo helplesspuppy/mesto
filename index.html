@@ -25,22 +25,17 @@
             </section>
             <section class="elements">
                 <ul class="elements__list">
-
                     <!-- Темплейт для карточек -->
                     <template class="template-card">
-                    <li class="element">
-                        <button class="element__delete-button" type="button" aria-label="кнопка удалить"></button>
-                        <img class="element__photo" alt="">
-                        <div class="element__text-box">
-                            <h2 class="element__title"></h2>
-                            <button class="element__like-button" type="button" aria-label="кнопка лайк"></button>
-                        </div>
-                    </li>
-                </template>
-
-
-
-                
+                        <li class="element">
+                            <button class="element__delete-button" type="button" aria-label="кнопка удалить"></button>
+                            <img class="element__photo" alt="">
+                            <div class="element__text-box">
+                                <h2 class="element__title"></h2>
+                                <button class="element__like-button" type="button" aria-label="кнопка лайк"></button>
+                            </div>
+                        </li>
+                    </template>
                 </ul>
             </section>
         </main>
@@ -75,17 +70,26 @@
                 <h3 class="popup__title">Новое место</h3>
                 <ul class="popup__list">
                     <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="1" placeholder="Название"
-                            name="pictureName">
+                        <input class="popup__input" type="text" minlength="1" placeholder="Название" name="pictureName">
                     </li>
                     <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="1" placeholder="Ссылка на картинку" name="picLink">
+                        <input class="popup__input" type="text" minlength="1" placeholder="Ссылка на картинку"
+                            name="picLink">
                     </li>
                 </ul>
                 <button class="popup__submit-button" type="submit">Создать</button>
             </form>
         </div>
     </div>
+    <!-- Попап открытия фотографий для просмотра -->
+    <div class="popup popup__image">
+        <div class="popup__mesto-container">
+            <img class="popup__mesto-image" src="invis.gif" alt="">
+            <button class="popup__close-button popup__close-button_image"></button>
+            <p class="popup__mesto-text"></p>
+        </div>
+    </div>
+
     <script src="./scripts/scripts.js"></script>
 </body>
 
