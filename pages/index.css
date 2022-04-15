@@ -44,3 +44,4 @@
 @import url(../blocks/popup/__mesto-image/popup__mesto-image.css);
 @import url(../blocks/popup/__mesto-text/popup__mesto-text.css);
 @import url(../blocks/popup/__close-button/_image/popup__close-button_image.css);
+@import url(../blocks/popup/__overlay/popup__overlay.css);

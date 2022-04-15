@@ -8,6 +8,7 @@ const closeButtonEdit = document.querySelector('.popup__close-button_edit');
 const closeButtonAdd = document.querySelector('.popup__close-button_add');
 const closeButtonImage = document.querySelector('.popup__close-button_image');
 const addButton = document.querySelector('.profile__add-button');
+const overLay = document.querySelector('.popup__overlay');
 
 
 const formElementEdit = document.querySelector('.popup__form_edit');
@@ -108,6 +109,14 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
+const handleEscUp = (evt) => {
+  const activePopup = document.querySelector('.popup_opened');
+  if (evt.keyCode == '27') {
+    closePopup(activePopup);
+  }
+}
+
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
@@ -132,6 +141,8 @@ editButton.addEventListener('click', function () {
   openPopup(popupEdit)
 });
 
+
+document.addEventListener('keyup', handleEscUp);
 closeButtonEdit.addEventListener('click', () => closePopup(popupEdit));
 closeButtonAdd.addEventListener('click', () => { closePopup(popupAdd)});
 closeButtonImage.addEventListener('click', () => closePopup(popupImage));
