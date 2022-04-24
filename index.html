@@ -48,18 +48,21 @@
         <div class="popup__overlay"></div>
         <div class="popup__container">
             <button class="popup__close-button popup__close-button_edit" type="button"></button>
-            <form class="popup__form popup__form_edit" novalidate name="form">
+            <form class="popup__form popup__form_edit" novalidate name="form1">
+                <fieldset class="popup__form-set">
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <ul class="popup__list">
                     <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="1" placeholder="Имя пользователя"
-                            name="name">
+                        <input class="popup__input" type="text" minlength="2" maxlength="40" placeholder="Имя пользователя" name="name" required>
+                        <span class="popup__input-error" id="name-error"></span>
                     </li>
                     <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="1" placeholder="Статус" name="status">
+                        <input class="popup__input" type="text" minlength="2" maxlength="200" placeholder="Статус" name="status" required>
+                        <span class="popup__input-error" id="status-error"></span>
                     </li>
                 </ul>
                 <button class="popup__submit-button" type="submit">Сохранить</button>
+                </fieldset>
             </form>
         </div>
     </div>
@@ -68,18 +71,21 @@
         <div class="popup__overlay"></div>
         <div class="popup__container">
             <button class="popup__close-button popup__close-button_add" type="button"></button>
-            <form class="popup__form popup__form_add" novalidate name="form">
+            <form class="popup__form popup__form_add" novalidate name="form2">
+                <fieldset class="popup__form-set">
                 <h3 class="popup__title">Новое место</h3>
                 <ul class="popup__list">
                     <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="1" placeholder="Название" name="pictureName">
+                        <input class="popup__input" type="text" minlength="2" maxlength="30" placeholder="Название" name="pictureName" required>
+                        <span class="popup__input-error" id="pictureName-error"></span>
                     </li>
                     <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="1" placeholder="Ссылка на картинку"
-                            name="picLink">
+                        <input class="popup__input" type="url" placeholder="Ссылка на картинку" name="picLink" required >
+                        <span class="popup__input-error" id="picLink-error"></span>
                     </li>
                 </ul>
                 <button class="popup__submit-button" type="submit">Создать</button>
+            </fieldset>
             </form>
         </div>
     </div>
@@ -93,6 +99,7 @@
         </div>
     </div>
     <script src="./scripts/scripts.js"></script>
+    <script src="./scripts/validation.js"></script>
 </body>
 
 </html>

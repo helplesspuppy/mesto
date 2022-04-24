@@ -8,7 +8,6 @@ const closeButtonEdit = document.querySelector('.popup__close-button_edit');
 const closeButtonAdd = document.querySelector('.popup__close-button_add');
 const closeButtonImage = document.querySelector('.popup__close-button_image');
 const addButton = document.querySelector('.profile__add-button');
-const overLay = document.querySelector('.popup__overlay');
 
 
 const formElementEdit = document.querySelector('.popup__form_edit');
@@ -116,6 +115,14 @@ const handleEscUp = (evt) => {
   }
 }
 
+const handleOverLay = (evt) => {
+  const activePopup = document.querySelector('.popup_opened'); // Дублирование кода?
+  if (evt.target.classList.contains('popup__overlay')) {
+    closePopup(activePopup);
+  }
+}
+
+
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -143,6 +150,7 @@ editButton.addEventListener('click', function () {
 
 
 document.addEventListener('keyup', handleEscUp);
+document.addEventListener('click', handleOverLay);
 closeButtonEdit.addEventListener('click', () => closePopup(popupEdit));
 closeButtonAdd.addEventListener('click', () => { closePopup(popupAdd)});
 closeButtonImage.addEventListener('click', () => closePopup(popupImage));
