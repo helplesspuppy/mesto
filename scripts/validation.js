@@ -1,10 +1,6 @@
-// FormElement - это сама форма
-// inputElement - это инпут формы
-
-
 
 function showInputError(formElement, inputElement, errorMessage) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add('popup__input_error');
     errorElement.textContent = errorMessage;
     errorElement.classList.add('popup__input-error_visible');
@@ -28,11 +24,11 @@ function showInputError(formElement, inputElement, errorMessage) {
     if (hasInvalidInput(inputList)) {
      // сделай кнопку неактивной
      buttonElement.classList.add('popup__submit-button_inactive');
-     buttonElement.setAttribute('disabled', true);
+     buttonElement.setAttribute('disabled', 'disabled');
    } else {
      // иначе сделай кнопку активной
      buttonElement.classList.remove('popup__submit-button_inactive');
-     buttonElement.removeAttribute('disabled', true);
+     buttonElement.removeAttribute('disabled', 'disabled');
    }
  }
 
@@ -70,13 +66,6 @@ function showInputError(formElement, inputElement, errorMessage) {
   };
   
   enableValidation();
-
-  //{
-   // formElement: '.popup__form[name=".popup__form"]',
-  //   inputElement: '.popup__input',
-  //   buttonElement: '.popup__submit-button',
-  // }
-  
   
   
   

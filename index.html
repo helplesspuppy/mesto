@@ -53,12 +53,12 @@
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <ul class="popup__list">
                     <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="2" maxlength="40" placeholder="Имя пользователя" name="name" required>
-                        <span class="popup__input-error" id="name-error"></span>
+                        <input class="popup__input" type="text" minlength="2" maxlength="40" placeholder="Имя пользователя" name="name" id="name-input" required>
+                        <span class="popup__input-error name-input-error"></span>
                     </li>
                     <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="2" maxlength="200" placeholder="Статус" name="status" required>
-                        <span class="popup__input-error" id="status-error"></span>
+                        <input class="popup__input" type="text" minlength="2" maxlength="200" placeholder="Статус" name="status" id="status-input" required>
+                        <span class="popup__input-error status-input-error"></span><!--  КЛАСС СПАНА СОСТОИТ ИЗ АЙДИ ИНПУТА + -ЕРРОР -->
                     </li>
                 </ul>
                 <button class="popup__submit-button" type="submit">Сохранить</button>
@@ -66,7 +66,7 @@
             </form>
         </div>
     </div>
-    <!-- Попап добавления фотографий -->
+    <!-- Попап добавления фотографий -->  
     <div class="popup popup_add">
         <div class="popup__overlay"></div>
         <div class="popup__container">
@@ -76,15 +76,15 @@
                 <h3 class="popup__title">Новое место</h3>
                 <ul class="popup__list">
                     <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="2" maxlength="30" placeholder="Название" name="pictureName" required>
-                        <span class="popup__input-error" id="pictureName-error"></span>
+                        <input class="popup__input" type="text" minlength="2" maxlength="30" placeholder="Название" name="pictureName" id="picture-input" required>
+                        <span class="popup__input-error picture-input-error"></span>
                     </li>
                     <li class="popup__list-element">
-                        <input class="popup__input" type="url" placeholder="Ссылка на картинку" name="picLink" required >
-                        <span class="popup__input-error" id="picLink-error"></span>
+                        <input class="popup__input" type="url" placeholder="Ссылка на картинку" name="picLink" id="link-input" required >
+                        <span class="popup__input-error link-input-error"></span>
                     </li>
                 </ul>
-                <button class="popup__submit-button" type="submit">Создать</button>
+                <button class="popup__submit-button" type="submit" disabled>Создать</button>
             </fieldset>
             </form>
         </div>

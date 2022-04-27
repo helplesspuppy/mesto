@@ -8,6 +8,7 @@ const closeButtonEdit = document.querySelector('.popup__close-button_edit');
 const closeButtonAdd = document.querySelector('.popup__close-button_add');
 const closeButtonImage = document.querySelector('.popup__close-button_image');
 const addButton = document.querySelector('.profile__add-button');
+const submitButton = document.querySelector('.popup__submit-button');
 
 
 const formElementEdit = document.querySelector('.popup__form_edit');
@@ -102,6 +103,8 @@ function deleteCard(evt) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keyup', handleEscUp);
+  document.addEventListener('click', handleOverLay);
 }
 
 function closePopup(popup) {
@@ -112,13 +115,17 @@ const handleEscUp = (evt) => {
   const activePopup = document.querySelector('.popup_opened');
   if (evt.keyCode == '27') {
     closePopup(activePopup);
+    document.removeEventListener('keyup', handleEscUp);
+    document.removeEventListener('click', handleOverLay);
   }
 }
 
 const handleOverLay = (evt) => {
-  const activePopup = document.querySelector('.popup_opened'); // Дублирование кода?
+  const activePopup = document.querySelector('.popup_opened'); 
   if (evt.target.classList.contains('popup__overlay')) {
     closePopup(activePopup);
+    document.removeEventListener('keyup', handleEscUp);
+    document.removeEventListener('click', handleOverLay);
   }
 }
 
@@ -130,16 +137,20 @@ function handleProfileFormSubmit(evt) {
   profileStatus.textContent = jobInput.value;
   closePopup(popupEdit);
 }
+// деактив кнопки
+function disableButtonSubmit() {
+  submitButton.setAttribute('disabled',true);
+}
 
 
 
 formElementEdit.addEventListener('submit', handleProfileFormSubmit);
-formElementAdd.addEventListener('submit', (evt) => { 
+ formElementAdd.addEventListener('submit', (evt) => { 
   evt.preventDefault(); 
   closePopup(popupAdd); 
   addCard(); 
-  picInput.value = ''; 
-  picLink.value = ''; 
+  formElementAdd.reset();
+  disableButtonSubmit();
 });
 
 editButton.addEventListener('click', function () {
@@ -149,10 +160,8 @@ editButton.addEventListener('click', function () {
 });
 
 
-document.addEventListener('keyup', handleEscUp);
-document.addEventListener('click', handleOverLay);
 closeButtonEdit.addEventListener('click', () => closePopup(popupEdit));
 closeButtonAdd.addEventListener('click', () => { closePopup(popupAdd)});
 closeButtonImage.addEventListener('click', () => closePopup(popupImage));
-addButton.addEventListener('click', () => { openPopup(popupAdd) });
+addButton.addEventListener('click', () => { openPopup(popupAdd)});
 render();
