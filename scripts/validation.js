@@ -65,7 +65,14 @@ function showInputError(formElement, inputElement, errorMessage) {
     });
   };
   
-  enableValidation();
+  enableValidation({
+    formElement: '.popup__form', //+
+    inputElement: '.popup__input',//+
+    buttonElement: '.popup__submit-button',//+
+    inactiveButtonClass: 'popup__submit-button_inactive',//+
+    inputErrorClass: 'popup__input_error', //+
+    errorClass: 'popup__input-error_visible'  // добавил свой класс
+  });
   
   
   

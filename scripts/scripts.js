@@ -9,6 +9,7 @@ const closeButtonAdd = document.querySelector('.popup__close-button_add');
 const closeButtonImage = document.querySelector('.popup__close-button_image');
 const addButton = document.querySelector('.profile__add-button');
 const submitButton = document.querySelector('.popup__submit-button');
+const escapeButton = 27;
 
 
 const formElementEdit = document.querySelector('.popup__form_edit');
@@ -32,37 +33,37 @@ const mestoText = document.querySelector('.popup__mesto-text');
 
 const initialCards = [
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Я',
+    link: 'https://sun9-55.userapi.com/s/v1/if2/drgK043DHKrGankyaqcCvxk7_Ye4QMer55th2hu77NYDF13bOrmEwjXeJIsX0x3yr5IqdwQHeUYdRPFMPBuffQFP.jpg?size=563x518&quality=96&type=album'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Устал',
+    link: 'https://sun9-27.userapi.com/s/v1/if2/qoggablNyaAHwYfYxU7rJYKiDLj9515WGm0iBvhady9iHZ1gbMlcnyh60vAykk2M1EgrEMN5uWG8QQeTb2Unvuz9.jpg?size=1600x1221&quality=96&type=album'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'от',
+    link: 'https://sun9-70.userapi.com/s/v1/if2/gjI79Ocfx3p6-9fYERps-4s4HWjh0EwjmVyDqHp2pvkE2Iehg6RzykY3MlJrFnwn_d7u62PW7RNL5n8yhzQQ8Er3.jpg?size=705x705&quality=96&type=album'
   },
   {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Этой',
+    link: 'https://sun9-84.userapi.com/s/v1/if2/sXgFdOGTV3rOEMmdMkcpWAhlKvekyJDYmmz9WnTduKgAQ2xROhxe6wekSAaS7XOyCX3ryJS9WiHc5cHrulo8jt2w.jpg?size=750x750&quality=95&type=album'
   },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Дурацкой',
+    link: 'https://sun9-54.userapi.com/s/v1/if2/6ysfTLkpiDytewe5rhvu2XKwwy4FRxWguDJ_LGM8xEAgJ65qUb3ZxZW-euimemqinrnAok0H_9B-pAfoUEmnTG43.jpg?size=1080x1080&quality=95&type=album'
   },
   {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Валидации',
+    link: 'https://sun4-12.userapi.com/s/v1/if2/YqmW8SEA0uW3c3VofmSKOGDzURnA4CQjQw-kqyelANXghVbsi6LHHVKawWisIEelk__cPJx8ZEqzqk0eMTNOMvLI.jpg?size=1282x978&quality=95&type=album'
   }
 ];
 
 function render() {
-  const cadsArray = initialCards.map((card) => { return getItem(card); });
+  const cadsArray = initialCards.map((card) => { return createItem(card); });
   elementsList.append(...cadsArray);
 }
 
-function getItem(card) {
+function createItem(card) {
   const newCard = cardTemplate.cloneNode(true);
   const titleEl = newCard.querySelector('.element__title');
   const photoEl = newCard.querySelector('.element__photo');
@@ -90,7 +91,7 @@ function like(evt) {
 function addCard() {
   const placeText = picInput.value;
   const placeLink = picLink.value;
-  const cardItem = getItem({ name: placeText, link: placeLink });
+  const cardItem = createItem({ name: placeText, link: placeLink });
   elementsList.prepend(cardItem);
 }
 
@@ -104,19 +105,19 @@ function deleteCard(evt) {
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keyup', handleEscUp);
-  document.addEventListener('click', handleOverLay);
+  popup.addEventListener('click', handleOverLay);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keyup', handleEscUp);
+  popup.removeEventListener('click', handleOverLay); 
 }
 
 const handleEscUp = (evt) => {
   const activePopup = document.querySelector('.popup_opened');
-  if (evt.keyCode == '27') {
+  if (evt.keyCode == escapeButton) {
     closePopup(activePopup);
-    document.removeEventListener('keyup', handleEscUp);
-    document.removeEventListener('click', handleOverLay);
   }
 }
 
@@ -124,8 +125,6 @@ const handleOverLay = (evt) => {
   const activePopup = document.querySelector('.popup_opened'); 
   if (evt.target.classList.contains('popup__overlay')) {
     closePopup(activePopup);
-    document.removeEventListener('keyup', handleEscUp);
-    document.removeEventListener('click', handleOverLay);
   }
 }
 
@@ -161,7 +160,7 @@ editButton.addEventListener('click', function () {
 
 
 closeButtonEdit.addEventListener('click', () => closePopup(popupEdit));
-closeButtonAdd.addEventListener('click', () => { closePopup(popupAdd)});
+closeButtonAdd.addEventListener('click', () => closePopup(popupAdd));
 closeButtonImage.addEventListener('click', () => closePopup(popupImage));
-addButton.addEventListener('click', () => { openPopup(popupAdd)});
+addButton.addEventListener('click', () => openPopup(popupAdd));
 render();
