@@ -1,15 +1,23 @@
+// formElement: '.popup__form', //+
+//     inputElement: '.popup__input',//+
+//     buttonElement: '.popup__submit-button',//+
+//     inactiveButtonClass: 'popup__submit-button_inactive',//+
+//     inputErrorClass: 'popup__input_error', //+
+//     errorClass: 'popup__input-error_visible'  // добавил свой класс
 
-function showInputError(formElement, inputElement, errorMessage) {
+
+
+function showInputError(formElement, inputElement, errorMessage, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add('popup__input_error');
+    inputElement.classList.add(config.inputErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add('popup__input-error_visible');
+    errorElement.classList.add(config.errorClass);
   };
 
-  function hideInputError(formElement, inputElement) {
+  function hideInputError(formElement, inputElement, config) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove('popup__input_error');
-    errorElement.classList.remove('popup__input-error_visible');
+    inputElement.classList.remove(config.inputErrorClass);
+    errorElement.classList.remove(config.errorClass);
     errorElement.textContent = '';
   };
 
@@ -66,12 +74,12 @@ function showInputError(formElement, inputElement, errorMessage) {
   };
   
   enableValidation({
-    formElement: '.popup__form', //+
-    inputElement: '.popup__input',//+
-    buttonElement: '.popup__submit-button',//+
-    inactiveButtonClass: 'popup__submit-button_inactive',//+
-    inputErrorClass: 'popup__input_error', //+
-    errorClass: 'popup__input-error_visible'  // добавил свой класс
+    formElement: '.popup__form', 
+    inputElement: '.popup__input',
+    buttonElement: '.popup__submit-button',
+    inactiveButtonClass: 'popup__submit-button_inactive',
+    inputErrorClass: 'popup__input_error', 
+    errorClass: 'popup__input-error_visible',
   });
   
   
