@@ -1,15 +1,19 @@
 .popup__container {
-    align-self: center;
-    justify-self: center;
-    position: relative;
-    width: 430px;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  flex-direction: column;
+  position: relative;
+  display: flex;
+  max-width: 430px;
+  width: 100%;
+  max-height: 330px;
+  border-radius: 10px;
+  background-color: white;
+  justify-content: center;
+  align-self: center;
+  z-index: 5;
 }
 
-@media screen and (max-width: 641px) {
-    .popup__container {
-        max-width: 282px;
-    }
+@media screen and (max-width: 600px) {
+  .popup__container {
+    max-width: 282px;
+  }  
 }

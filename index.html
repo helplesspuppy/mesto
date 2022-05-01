@@ -1,105 +1,104 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
-    <title>Mesto</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Место</title>
 </head>
 
 <body class="page">
-    <div class="page__size">
-        <header class="header">
-            <img src="./images/logo.svg" class="header__logo" alt="Лого проекта 'Место' ">
-        </header>
-        <main>
-            <section class="profile">
-                <img src="./images/ЖакИв-Кусто1.jpg" class="profile__avatar" alt="Портрет Жака Ив-Кусто">
-                <div class="profile__info">
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
-                    <p class="profile__status">Исследователь океана</p>
-                </div>
-                <button class="profile__add-button" type="button" aria-label="Добавить"></button>
-            </section>
-            <section class="elements">
-                <ul class="elements__list">
-                    <!-- Темплейт для карточек -->
-                    <template class="template-card">
-                        <li class="element">
-                            <button class="element__delete-button" type="button" aria-label="кнопка удалить"></button>
-                            <img class="element__photo" alt="">
-                            <div class="element__text-box">
-                                <h2 class="element__title"></h2>
-                                <button class="element__like-button" type="button" aria-label="кнопка лайк"></button>
-                            </div>
-                        </li>
-                    </template>
-                </ul>
-            </section>
-        </main>
-        <footer class="footer">
-            <p class="footer__project-name">&copy; 2022 Mesto Russia</p>
-        </footer>
-    </div>
-    <!-- Попап редактирования профиля -->
-    <div class="popup popup_edit">
-        <div class="popup__overlay"></div>
-        <div class="popup__container">
-            <button class="popup__close-button popup__close-button_edit" type="button"></button>
-            <form class="popup__form popup__form_edit" novalidate name="form1">
-                <fieldset class="popup__form-set">
-                <h3 class="popup__title">Редактировать профиль</h3>
-                <ul class="popup__list">
-                    <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="2" maxlength="40" placeholder="Имя пользователя" name="name" id="name-input" required>
-                        <span class="popup__input-error name-input-error"></span>
-                    </li>
-                    <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="2" maxlength="200" placeholder="Статус" name="status" id="status-input" required>
-                        <span class="popup__input-error status-input-error"></span><!--  КЛАСС СПАНА СОСТОИТ ИЗ АЙДИ ИНПУТА + -ЕРРОР -->
-                    </li>
-                </ul>
-                <button class="popup__submit-button" type="submit">Сохранить</button>
-                </fieldset>
-            </form>
+  <div class="page__size">
+    <header class="header">
+      <img class="header__logo" src="./images/headerLogo.svg" alt="Логотип проекта Mesto">
+    </header>
+    <main>
+      <section class="profile">
+        <img class="profile__avatar" src="./images/profileAvatar.jpg" alt="Портрет Жака Ив-Кусто">
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
+          <p class="profile__status">Исследователь океана</p>
         </div>
+        <button class="profile__add-button" type="button" aria-label="Добавить"></button>
+      </section>
+      <section class="elements">
+        <ul class="elements__list">
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__text">&copy; 2020 Mesto Russia</p>
+    </footer>
+  </div>
+  <!-- Попап редактирования профиля -->
+  <div class="popup popup_edit">
+    <div class="popup__overlay"></div>
+    <div class="popup__container">
+      <button class="popup__close popup__close_edit" type="button"></button>
+      <form class="popup__form popup__form_edit" name="data">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <ul class="popup__list">
+          <li class="popup__list-element">
+            <input type="text" class="popup__data-box" required minlength="2" maxlength="40" name="user-name">
+            <span class="popup__input-error" id="user-name-error"></span>
+          </li>
+          <li class="popup__list-element">
+            <input type="text" class="popup__data-box" required minlength="2" maxlength="200" name="user-status">
+            <span class="popup__input-error" id="user-status-error"></span>
+          </li>
+        </ul>
+        <button class="popup__submit" type="submit">Сохранить</button>
+      </form>
     </div>
-    <!-- Попап добавления фотографий -->  
-    <div class="popup popup_add">
-        <div class="popup__overlay"></div>
-        <div class="popup__container">
-            <button class="popup__close-button popup__close-button_add" type="button"></button>
-            <form class="popup__form popup__form_add" novalidate name="form2">
-                <fieldset class="popup__form-set">
-                <h3 class="popup__title">Новое место</h3>
-                <ul class="popup__list">
-                    <li class="popup__list-element">
-                        <input class="popup__input" type="text" minlength="2" maxlength="30" placeholder="Название" name="pictureName" id="picture-input" required>
-                        <span class="popup__input-error picture-input-error"></span>
-                    </li>
-                    <li class="popup__list-element">
-                        <input class="popup__input" type="url" placeholder="Ссылка на картинку" name="picLink" id="link-input" required >
-                        <span class="popup__input-error link-input-error"></span>
-                    </li>
-                </ul>
-                <button class="popup__submit-button" type="submit" disabled>Создать</button>
-            </fieldset>
-            </form>
-        </div>
+  </div>
+  <!-- Попап добавления фотографий -->
+  <div class="popup popup_add">
+    <div class="popup__overlay"></div>
+    <div class="popup__container">
+      <button class="popup__close popup__close_add" type="button"></button>
+      <form class="popup__form popup__form_add" name="data">
+        <h3 class="popup__title">Новое место</h3>
+        <ul class="popup__list">
+          <li class="popup__list-element">
+            <input type="text" class="popup__data-box" name="place-name" required minlength="2" maxlength="30"
+              placeholder="Название">
+            <span class="popup__input-error" id="place-name-error"></span>
+          </li>
+          <li class="popup__list-element">
+            <input type="url" class="popup__data-box" name="place-link" required placeholder="Сылка на картинку">
+            <span class="popup__input-error" id="place-link-error"></span>
+          </li>
+        </ul>
+        <button class="popup__submit" type="submit">Создать</button>
+      </form>
     </div>
-    <!-- Попап открытия фотографий для просмотра -->
-    <div class="popup popup_image">
-        <div class="popup__overlay"></div>
-        <div class="popup__mesto-container">
-            <img class="popup__mesto-image" src="invis.gif" alt="">
-            <button class="popup__close-button popup__close-button_image"></button>
-            <p class="popup__mesto-text"></p>
-        </div>
-    </div>
-    <script src="./scripts/scripts.js"></script>
-    <script src="./scripts/validation.js"></script>
+  </div>
+  <!-- Попап открытия фотографий для просмотра  -->
+  <div class="popup popup_image">
+    <div class="popup__overlay"></div>
+    <figure class="popup__place-box">
+      <button class="popup__close popup__close_image" type="button"></button>
+      <img class="popup__place-picture" src="invis.gif" alt="открытая картинка">
+      <figcaption class="popup__place-text">
+        <p class="popup__place-name"></p>
+      </figcaption>
+    </figure>
+  </div>
+  <!-- Темплейт для карточек -->
+  <template class="template">
+    <li class="elements__box">
+      <button class="elements__delete-button" type="button" aria-label="кнопка удалить"></button>
+      <img class="elements__image" alt="">
+      <div class="elements__name-box">
+        <h2 class="elements__title"></h2>
+        <button class="elements__like-button" type="button" aria-label="кнопка лайк"></button>
+      </div>
+    </li>
+  </template>
+
+  <script src="./scripts/scripts.js" defer></script>
+  <script src="./scripts/validation.js" defer></script>
 </body>
 
 </html>

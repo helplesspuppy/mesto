@@ -1,18 +1,23 @@
 .profile__info {
-    display: flex;
-    gap: 16px 18px;
-    max-width: calc(100% - 300px);
-    flex-wrap: wrap;
-    margin-right: auto;
-    align-content: flex-start;
-} 
-
-@media screen and (max-width:641px) {
-    .profile__info {
-        justify-content: center;
-        max-width: 282px;
-        margin: 0;
-        gap: 14px 10px;
-    }
+  display: flex;
+  margin-right: auto;
+  flex-wrap: wrap;
+  max-width: calc(100% - 300px);
+  white-space: nowrap;
+  gap: 16px 18px;
+  align-content: flex-start;
 }
 
+@media screen and (max-width: 676px) {
+  .profile__info {
+    justify-content: center;
+    margin: 0;
+    max-width: 282px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile__info {
+    gap: 14px 10px;
+  }
+}
