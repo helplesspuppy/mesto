@@ -14,7 +14,7 @@ function showInputError(formElement, inputElement, errorMessage) {
   };
 
   function hasInvalidInput(inputList) {
-
+    
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     })
@@ -56,7 +56,11 @@ function showInputError(formElement, inputElement, errorMessage) {
     const formList = Array.from(document.querySelectorAll('.popup__form'));
     formList.forEach((formElement) => {
       formElement.addEventListener('submit', function (evt) {
-        evt.preventDefault();
+        // ДОБАВИТЬ СЮДА ДИЗЕЙБЛЕД БАТОН
+        const buttonElement = formElement.querySelector('.popup__submit-button');
+        buttonElement.classList.add('popup__submit-button_inactive');
+        buttonElement.setAttribute('disabled', 'disabled');
+
       });
       const fieldsetList = Array.from(formElement.querySelectorAll('.popup__form-set')); 
       fieldsetList.forEach((fieldset) => {
