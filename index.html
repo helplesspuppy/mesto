@@ -3,40 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./scripts/initial-cards.js" defer></script>
+  <script type="module" src="./scripts/index.js" defer></script>
   <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
-
 <body class="page">
   <div class="page__size">
     <header class="header">
-      <img class="header__logo" src="./images/headerLogo.svg" alt="Логотип проекта Mesto">
+      <img class="header__logo" src="./images/headerLogo.svg" alt="Логотип Mesto">
     </header>
     <main>
-      <section class="profile">
-        <img class="profile__avatar" src="./images/profileAvatar.jpg" alt="Портрет Жака Ив-Кусто">
-        <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
-          <p class="profile__status">Исследователь океана</p>
-        </div>
-        <button class="profile__add-button" type="button" aria-label="Добавить"></button>
-      </section>
-      <section class="elements">
-        <ul class="elements__list">
-        </ul>
-      </section>
+    <section class="profile">
+      <img class="profile__avatar" src="./images/profileAvatar.jpg" alt="Аватар профиля">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button class="profile__edit-button" type="button"></button>
+        <p class="profile__status">Исследователь океана</p>
+      </div>
+      <button class="profile__add-button" type="button"></button>
+    </section>
+    <section class="elements">
+      <ul class="elements__list">
+      </ul>
+    </section>
     </main>
     <footer class="footer">
-      <p class="footer__text">&copy; 2020 Mesto Russia</p>
+      <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
   </div>
-  <!-- Попап редактирования профиля -->
   <div class="popup popup_edit">
     <div class="popup__overlay"></div>
     <div class="popup__container">
       <button class="popup__close popup__close_edit" type="button"></button>
-      <form class="popup__form popup__form_edit" name="data">
+      <form class="popup__form popup__form_edit" novalidate name="data-edit">
         <h3 class="popup__title">Редактировать профиль</h3>
         <ul class="popup__list">
           <li class="popup__list-element">
@@ -52,17 +52,15 @@
       </form>
     </div>
   </div>
-  <!-- Попап добавления фотографий -->
   <div class="popup popup_add">
     <div class="popup__overlay"></div>
     <div class="popup__container">
       <button class="popup__close popup__close_add" type="button"></button>
-      <form class="popup__form popup__form_add" name="data">
+      <form class="popup__form popup__form_add" novalidate name="data-add">
         <h3 class="popup__title">Новое место</h3>
         <ul class="popup__list">
           <li class="popup__list-element">
-            <input type="text" class="popup__data-box" name="place-name" required minlength="2" maxlength="30"
-              placeholder="Название">
+            <input type="text" class="popup__data-box" name="place-name" required minlength="2" maxlength="30" placeholder="Название">
             <span class="popup__input-error" id="place-name-error"></span>
           </li>
           <li class="popup__list-element">
@@ -74,31 +72,25 @@
       </form>
     </div>
   </div>
-  <!-- Попап открытия фотографий для просмотра  -->
   <div class="popup popup_image">
     <div class="popup__overlay"></div>
     <figure class="popup__place-box">
       <button class="popup__close popup__close_image" type="button"></button>
-      <img class="popup__place-picture" src="invis.gif" alt="открытая картинка">
+      <img class="popup__place-picture" src="./images/elementWall.jpg" alt="открытая картинка">
       <figcaption class="popup__place-text">
-        <p class="popup__place-name"></p>
+        <p class="popup__place-name">Стена с текстом</p>
       </figcaption>
     </figure>
   </div>
-  <!-- Темплейт для карточек -->
   <template class="template">
     <li class="elements__box">
-      <button class="elements__delete-button" type="button" aria-label="кнопка удалить"></button>
-      <img class="elements__image" alt="">
+      <button class="elements__delete-button" type="button"></button>
+      <img class="elements__image" src="./images/elementWall.jpg" alt="Каритнка в карточке">
       <div class="elements__name-box">
         <h2 class="elements__title"></h2>
-        <button class="elements__like-button" type="button" aria-label="кнопка лайк"></button>
+        <button class="elements__like-button" type="button"></button>
       </div>
     </li>
   </template>
-
-  <script src="./scripts/scripts.js" defer></script>
-  <script src="./scripts/validation.js" defer></script>
 </body>
-
 </html>
